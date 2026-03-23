@@ -1,4 +1,4 @@
-/**
+ /**
  * app.js — NormalizerPro
  * Interactive features: SQL generator, replay mode,
  * FD live indicators, file upload parser, attribute
@@ -560,10 +560,22 @@ window.addEventListener('DOMContentLoaded', () => {
     }, 1000);
 
     // Handle autoplay policy on some browsers
-    bgVideo.play().catch(() => {
-      // If autoplay blocked, show static background gracefully
-      bgVideo.style.opacity = '0.6';
-    });
+    const playPromise = bgVideo.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        bgVideo.style.opacity = '0.7';
+        console.log("Auto-play blocked by browser. Video will start on first click.");
+        
+        const startVideo = () => {
+          bgVideo.play();
+          bgVideo.style.opacity = '1';
+          document.removeEventListener('click', startVideo);
+          document.removeEventListener('touchstart', startVideo);
+        };
+        document.addEventListener('click', startVideo, { once: true });
+        document.addEventListener('touchstart', startVideo, { once: true });
+      });
+    }
 
     // Remove audio track behavior — video is muted but ensure it stays that way
     bgVideo.muted = true;
