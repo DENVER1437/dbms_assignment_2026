@@ -1,4 +1,4 @@
-/* ═══════════════════════════════════════════════════
+ /* ═══════════════════════════════════════════════════
    NormalizerPro — Main Stylesheet
    DBMS Normalization Tool | 24BCE380 & 24BCE374
    Redesigned with Stitch "Syntactic Dark" Design System
@@ -1262,3 +1262,303 @@ body, #page-home, #page-tool, #page-learn, main, .hero {
 .conclusion-text .hl-gold   { color: var(--gold);   font-weight: 600; font-family: var(--mono); }
 .conclusion-text .hl-green  { color: var(--green);  font-weight: 600; }
 .conclusion-text .hl-red    { color: var(--red);    font-weight: 600; }
+
+/* ════════════════════════════════════════════════════════════
+   ANTIGRAVITY RESPONSIVE DESIGN SYSTEM / ADAPTIVE LAYOUT
+   ════════════════════════════════════════════════════════════ */
+
+/* ═══ GLOBAL SAFE AREAS & BASE RESPONSIVENESS ═══ */
+body {
+  overflow-x: hidden !important;
+  width: 100%;
+}
+
+nav {
+  padding-top: env(safe-area-inset-top);
+}
+
+footer {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: collapse;
+}
+
+.hero h1 {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+}
+
+.card-title, .nav-logo {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+}
+
+/* ═══ TOUCH & ACCESSIBILITY RULES ═══ */
+@media (pointer: coarse) {
+  button, 
+  .nav-tab, 
+  select, 
+  input, 
+  .learn-nav-pill, 
+  .btn-primary, 
+  .btn-secondary, 
+  .btn-ghost {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+@media (max-width: 768px) and (pointer: coarse) {
+  #bg-video {
+    opacity: 0.15 !important;
+  }
+  #video-bg-container {
+    background: linear-gradient(160deg, var(--bg, #0a0d14) 0%, var(--bg2, #0f1117) 100%) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  #bg-video {
+    display: none !important;
+  }
+  div[style*="gridPulse"] {
+    animation: none !important;
+  }
+}
+
+@media (hover: none) {
+  /* Prevent sticky hover states on mobile */
+  .card:hover, .home-card:hover, .learn-usecase-card:hover,
+  .btn:hover, .nav-tab:hover {
+    transform: none !important;
+    box-shadow: inherit !important;
+  }
+}
+
+
+/* ═══ 1. PHONE PORTRAIT (max-width: 479px) ═══ */
+@media screen and (max-width: 479px) {
+  .nav-badge {
+    display: none !important;
+  }
+
+  .nav-inner {
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 52px;
+    height: auto;
+    padding: 0.5rem 1rem;
+    gap: 0.5rem;
+  }
+
+  .nav-inner > div:last-child {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.2rem;
+    justify-content: flex-start;
+  }
+
+  .nav-tab {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    white-space: nowrap;
+  }
+
+  .hero {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.4rem, 8vw, 2rem);
+  }
+
+  div[style*="gridPulse"] {
+    animation: none !important;
+  }
+
+  .card, .home-card, .learn-usecase-card, .learn-nf-card {
+    width: 100%;
+    border-radius: 12px;
+    padding: 0.875rem;
+    box-sizing: border-box;
+  }
+
+  .input-grid, .learn-nf-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .btn-row {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .btn-row button, .btn-row .btn, .btn-row > div {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nf-progression {
+    font-size: 0.68rem;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #bg-video {
+    opacity: 0.4 !important;
+    will-change: auto;
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+}
+
+
+/* ═══ 2. PHONE LANDSCAPE (max-height: 500px AND max-width: 900px) ═══ */
+@media screen and (max-height: 500px) and (max-width: 900px) {
+  nav {
+    height: 48px;
+  }
+
+  .nav-inner {
+    height: 48px;
+    min-height: 48px;
+    padding: 0 1rem;
+  }
+
+  .hero {
+    padding: 1rem 1rem 0.5rem;
+  }
+
+  .hero h1 {
+    font-size: 1.3rem;
+  }
+
+  main, .page-content {
+    padding-top: 0.5rem;
+  }
+
+  #bg-video {
+    opacity: 0.5 !important;
+  }
+}
+
+
+/* ═══ 3. TABLET PORTRAIT (480px - 767px) ═══ */
+@media screen and (min-width: 480px) and (max-width: 767px) {
+  .nav-badge {
+    display: inline-flex;
+  }
+
+  .nav-tab {
+    font-size: 0.85rem;
+  }
+
+  .hero {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .input-grid, .learn-nf-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .card, .home-card, .learn-usecase-card, .learn-nf-card {
+    border-radius: 14px;
+    padding: 1.1rem;
+  }
+}
+
+
+/* ═══ 4. TABLET LANDSCAPE / SMALL LAPTOP (768px - 1023px) ═══ */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .input-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .learn-nf-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .hero {
+    padding: 3rem 2rem;
+  }
+
+  .card, .home-card, .learn-usecase-card, .learn-nf-card {
+    padding: 1.25rem;
+  }
+
+  #bg-video {
+    opacity: 1 !important;
+  }
+}
+
+
+/* ═══ 5. DESKTOP (1024px - 1439px) ═══ */
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .input-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .learn-nf-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+}
+
+
+/* ═══ 6. WIDE DESKTOP / 4K (1440px+) ═══ */
+@media screen and (min-width: 1440px) {
+  .nav-inner, main, .hero, .learn-section, #page-home > div {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 4vw, 3.2rem);
+  }
+
+  .card, .home-card, .learn-usecase-card, .learn-nf-card {
+    padding: 1.5rem;
+  }
+
+  #bg-video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    opacity: 1 !important;
+  }
+}
